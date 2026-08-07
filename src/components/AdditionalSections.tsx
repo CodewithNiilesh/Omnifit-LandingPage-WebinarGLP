@@ -293,11 +293,11 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
                 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <Calendar size={22} color="#0EA5E9" />
-                        <span>Sunday, 22nd Feb</span>
+                        <span>Saturday, 15th Aug</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <Clock size={22} color="#0EA5E9" />
-                        <span>11:00 AM IST</span>
+                        <span>7:00 PM IST</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#DC2626' }}>
                         <Video size={22} color="#DC2626" />

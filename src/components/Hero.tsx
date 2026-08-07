@@ -116,8 +116,8 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                     }}
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <Calendar size={24} color="var(--color-accent)" />
-                        <span>Sunday, 22nd Feb</span>
+                        <Calendar size={24} color="var(--color-brand-blue)" />
+                        <span>Saturday, 15th Aug</span>
                     </div>
                     <div style={{
                         display: 'flex',
@@ -126,8 +126,8 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         borderLeft: '2px solid rgba(0,0,0,0.1)',
                         paddingLeft: '1.5rem'
                     }}>
-                        <Clock size={24} color="var(--color-accent)" />
-                        <span>11:00 AM IST</span>
+                        <Clock size={24} color="var(--color-brand-blue)" />
+                        <span>7:00 PM IST</span>
                     </div>
                     <div style={{
                         display: 'flex',
