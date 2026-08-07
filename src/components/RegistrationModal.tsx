@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, CheckCircle2 } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle } from 'lucide-react';
 
 interface RegistrationModalProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZZVGRFc_DUvTL8HGcJq2KB1FBNfSeEmpDn7p9y8CxgfrhjKRc4TrmQ2lyVogSmb7A/exec';
+
 const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errorMsg, setErrorMsg] = useState('');
     const [formData, setFormData] = useState({
         fullName: '',
         whatsappNo: '',
@@ -19,28 +22,6 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
         weight: '',
         diseases: ''
     });
-
-    const handleSubmit = () => {
-        // Let the browser submit the form natively to the hidden iframe
-        // Do NOT prevent default
-        setIsSubmitting(true);
-    };
-
-    const handleIframeLoad = () => {
-        if (isSubmitting) {
-            setIsSubmitted(true);
-            setIsSubmitting(false);
-            setTimeout(() => {
-                onClose();
-                setIsSubmitted(false);
-                setFormData({ fullName: '', whatsappNo: '', email: '', city: '', height: '', weight: '', diseases: '' });
-            }, 3000);
-        }
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
 
     const calculateBMI = () => {
         if (formData.weight && formData.height) {
@@ -62,18 +43,72 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
         const bmiVal = parseFloat(bmi);
         if (bmiVal < 18.5) {
             bmiCategory = 'Underweight';
-            bmiColor = '#3B82F6'; // Blue
+            bmiColor = '#3B82F6';
         } else if (bmiVal < 25) {
             bmiCategory = 'Normal Weight';
-            bmiColor = '#10B981'; // Green
+            bmiColor = '#16A34A';
         } else if (bmiVal < 30) {
             bmiCategory = 'Overweight';
-            bmiColor = '#F59E0B'; // Amber
+            bmiColor = '#F59E0B';
         } else {
             bmiCategory = 'Obese';
-            bmiColor = '#EF4444'; // Red
+            bmiColor = '#DC2626';
         }
     }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        if (errorMsg) setErrorMsg('');
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setErrorMsg('');
+
+        try {
+            const payload: Record<string, string> = {
+                source: 'Webinar Page',
+                Source: 'Webinar Page',
+                name: formData.fullName,
+                fullName: formData.fullName,
+                phone: formData.whatsappNo,
+                whatsappNo: formData.whatsappNo,
+                email: formData.email,
+                city: formData.city,
+                height: formData.height,
+                weight: formData.weight,
+                bmi: bmi || '',
+                diseases: formData.diseases
+            };
+
+            const params = new URLSearchParams();
+            Object.entries(payload).forEach(([key, val]) => {
+                params.append(key, val);
+            });
+
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: params.toString()
+            });
+
+            setIsSubmitted(true);
+            setIsSubmitting(false);
+            setTimeout(() => {
+                onClose();
+                setIsSubmitted(false);
+                setFormData({ fullName: '', whatsappNo: '', email: '', city: '', height: '', weight: '', diseases: '' });
+            }, 4000);
+        } catch (err) {
+            console.error('Lead submission failed:', err);
+            setErrorMsg('Failed to submit form. Please check your network connection and try again.');
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <AnimatePresence>
@@ -96,7 +131,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                         style={{
                             position: 'absolute',
                             top: 0, left: 0, right: 0, bottom: 0,
-                            backgroundColor: 'rgba(0,0,0,0.5)',
+                            backgroundColor: 'rgba(15, 32, 68, 0.6)',
                             backdropFilter: 'blur(4px)'
                         }}
                     />
@@ -113,7 +148,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                             width: '100%',
                             maxWidth: '500px',
                             position: 'relative',
-                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                            boxShadow: '0 25px 50px -12px rgba(15, 32, 68, 0.25)',
                             maxHeight: '90vh',
                             overflowY: 'auto'
                         }}
@@ -127,7 +162,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                 background: 'none',
                                 border: 'none',
                                 cursor: 'pointer',
-                                color: '#6B7280'
+                                color: '#4A6FA5'
                             }}
                         >
                             <X size={24} />
@@ -140,122 +175,107 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     animate={{ scale: 1 }}
                                     transition={{ type: "spring", bounce: 0.5 }}
                                 >
-                                    <CheckCircle2 size={64} color="#10B981" style={{ margin: '0 auto 1.5rem auto' }} />
+                                    <CheckCircle2 size={64} color="#16A34A" style={{ margin: '0 auto 1.5rem auto' }} />
                                 </motion.div>
-                                <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-brand-blue)', marginBottom: '1rem' }}>Registration Successful!</h2>
+                                <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-brand-blue)', marginBottom: '1rem' }}>Registration Successful!</h2>
                                 <p style={{ color: 'var(--color-secondary)' }}>Thank you for registering. You will receive the Zoom link details on your WhatsApp shortly.</p>
                             </div>
                         ) : (
                             <>
-                                <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-brand-blue)', marginBottom: '0.5rem' }}>Join the Masterclass</h2>
-                                <p style={{ color: 'var(--color-secondary)', marginBottom: '2rem' }}>Please fill out your details below to reserve your spot.</p>
+                                <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-brand-blue)', marginBottom: '0.5rem' }}>Join the Masterclass</h2>
+                                <p style={{ color: 'var(--color-secondary)', marginBottom: '1.5rem' }}>Please fill out your details below to reserve your spot.</p>
 
-                                <iframe name="hidden_iframe" id="hidden_iframe" style={{ display: 'none' }} onLoad={handleIframeLoad}></iframe>
+                                {errorMsg && (
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        padding: '0.75rem 1rem',
+                                        background: '#FEF2F2',
+                                        border: '1px solid #FCA5A5',
+                                        borderRadius: '8px',
+                                        color: '#DC2626',
+                                        fontSize: '0.9rem',
+                                        marginBottom: '1rem'
+                                    }}>
+                                        <AlertCircle size={18} />
+                                        <span>{errorMsg}</span>
+                                    </div>
+                                )}
 
-                                <form
-                                    action="https://crm.zoho.in/crm/WebToLeadForm"
-                                    name="WebToLeads1207261000000439323"
-                                    method="POST"
-                                    acceptCharset="UTF-8"
-                                    target="hidden_iframe"
-                                    onSubmit={handleSubmit}
-                                    style={{ display: 'grid', gap: '1.25rem' }}
-                                >
-                                    {/* Zoho Hidden Fields (New Webform) */}
-                                    <input type="hidden" name="xnQsjsdp" value="ad6dd777bf77e5f8c2d0edf5211767ce79249c3b66ac669ff969effc721e252f" />
-                                    <input type="hidden" name="zc_gad" id="zc_gad" value="" />
-                                    <input type="hidden" name="xmIwtLD" value="51dbd4fcaedf5d5c8fab0b59e474c164abd5c726546ea4750cb255c5f26726a64e70ccd85fa9909bbbc3e47b25c48768" />
-                                    <input type="hidden" name="actionType" value="TGVhZHM=" />
-                                    <input type="hidden" name="returnURL" value="null" />
-                                    <input type="hidden" name="aG9uZXlwb3Q" value="" />
-
-                                    {/* Mapping React State to Zoho Field Names (Mapped correctly based on user's custom form) */}
-                                    {/* We must split the user's Full Name into First/Last name for Zoho */}
-                                    <input type="hidden" name="First Name" value={formData.fullName.split(' ').slice(0, -1).join(' ') || formData.fullName.split(' ')[0]} />
-                                    <input type="hidden" name="Last Name" value={formData.fullName.split(' ').slice(-1).join(' ') || 'User'} />
-
-                                    <input type="hidden" name="Mobile" value={formData.whatsappNo} />
-                                    <input type="hidden" name="Email" value={formData.email} />
-                                    <input type="hidden" name="Phone" value={formData.city} /> {/* City mapped to Phone */}
-
-                                    {/* Custom Fields (User repurposed Company, Designation, Fax, Website, No_of_Employees) */}
-                                    <input type="hidden" name="Company" value={formData.height} /> {/* Height -> Company */}
-                                    <input type="hidden" name="Designation" value={formData.weight} /> {/* Weight -> Designation */}
-                                    <input type="hidden" name="Fax" value={bmi || ''} /> {/* BMI -> Fax */}
-                                    <input type="hidden" name="Website" value={formData.diseases} /> {/* Diseases 1 -> Website */}
-
+                                <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>Full Name *</label>
+                                        <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#1E3A5F', marginBottom: '0.5rem' }}>Full Name *</label>
                                         <input
                                             type="text"
                                             name="fullName"
                                             required
                                             value={formData.fullName}
                                             onChange={handleChange}
-                                            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #D1D5DB', fontSize: '1rem' }}
+                                            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '1rem', fontFamily: 'var(--font-body)' }}
                                             placeholder="John Doe"
                                         />
                                     </div>
 
                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                         <div>
-                                            <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>WhatsApp No *</label>
+                                            <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#1E3A5F', marginBottom: '0.5rem' }}>WhatsApp No *</label>
                                             <input
                                                 type="tel"
                                                 name="whatsappNo"
                                                 required
                                                 value={formData.whatsappNo}
                                                 onChange={handleChange}
-                                                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #D1D5DB', fontSize: '1rem' }}
+                                                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '1rem', fontFamily: 'var(--font-body)' }}
                                                 placeholder="+91"
                                             />
                                         </div>
                                         <div>
-                                            <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>Email Adderss</label>
+                                            <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#1E3A5F', marginBottom: '0.5rem' }}>Email Address</label>
                                             <input
                                                 type="email"
                                                 name="email"
                                                 value={formData.email}
                                                 onChange={handleChange}
-                                                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #D1D5DB', fontSize: '1rem' }}
+                                                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '1rem', fontFamily: 'var(--font-body)' }}
                                                 placeholder="john@example.com"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>City *</label>
+                                        <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#1E3A5F', marginBottom: '0.5rem' }}>City *</label>
                                         <input
                                             type="text"
                                             name="city"
                                             required
                                             value={formData.city}
                                             onChange={handleChange}
-                                            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #D1D5DB', fontSize: '1rem' }}
+                                            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '1rem', fontFamily: 'var(--font-body)' }}
                                             placeholder="Mumbai"
                                         />
                                     </div>
 
                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                         <div>
-                                            <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>Height (cm)</label>
+                                            <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#1E3A5F', marginBottom: '0.5rem' }}>Height (cm)</label>
                                             <input
                                                 type="number"
                                                 name="height"
                                                 value={formData.height}
                                                 onChange={handleChange}
-                                                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #D1D5DB', fontSize: '1rem' }}
+                                                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '1rem', fontFamily: 'var(--font-body)' }}
                                                 placeholder="165"
                                             />
                                         </div>
                                         <div>
-                                            <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>Weight (kg)</label>
+                                            <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#1E3A5F', marginBottom: '0.5rem' }}>Weight (kg)</label>
                                             <input
                                                 type="number"
                                                 name="weight"
                                                 value={formData.weight}
                                                 onChange={handleChange}
-                                                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #D1D5DB', fontSize: '1rem' }}
+                                                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '1rem', fontFamily: 'var(--font-body)' }}
                                                 placeholder="85"
                                             />
                                         </div>
@@ -276,7 +296,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                                 overflow: 'hidden'
                                             }}
                                         >
-                                            <span style={{ fontWeight: 600, color: '#374151' }}>Estimated BMI: <span style={{ color: bmiColor, fontSize: '1.2rem', marginLeft: '0.5rem' }}>{bmi}</span></span>
+                                            <span style={{ fontWeight: 600, color: '#1E3A5F' }}>Estimated BMI: <span style={{ color: bmiColor, fontSize: '1.2rem', marginLeft: '0.5rem' }}>{bmi}</span></span>
                                             <span style={{
                                                 fontSize: '0.9rem',
                                                 fontWeight: 700,
@@ -290,16 +310,16 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     )}
 
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>Any Pre-existing Diseases?</label>
+                                        <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#1E3A5F', marginBottom: '0.5rem' }}>Any Pre-existing Diseases?</label>
                                         <select
                                             name="diseases"
                                             value={formData.diseases}
                                             onChange={handleChange}
-                                            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #D1D5DB', fontSize: '1rem', backgroundColor: 'white' }}
+                                            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '1rem', backgroundColor: 'white', fontFamily: 'var(--font-body)' }}
                                         >
                                             <option value="">Select (Optional)</option>
                                             <option value="None">None</option>
-                                            <option value="Diabetes Typ2 2">Diabetes (Type 2)</option>
+                                            <option value="Diabetes Type 2">Diabetes (Type 2)</option>
                                             <option value="Thyroid">Thyroid Issues</option>
                                             <option value="PCOS/PCOD">PCOS / PCOD</option>
                                             <option value="Hypertension">Hypertension (High BP)</option>
@@ -315,7 +335,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     >
                                         {isSubmitting ? 'Registering...' : 'Confirm Registration'}
                                     </button>
-                                    <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#6B7280', marginTop: '0.5rem' }}>
+                                    <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#4A6FA5', marginTop: '0.5rem' }}>
                                         Your information is secure. We will only use this to send you webinar updates.
                                     </p>
                                 </form>

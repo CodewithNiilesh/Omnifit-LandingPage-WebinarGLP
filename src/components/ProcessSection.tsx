@@ -14,8 +14,8 @@ const ProcessSection: React.FC = () => {
         <section className="section section-light">
             <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-                    <span style={{ color: 'var(--color-accent)', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '1rem', display: 'block' }}>Your Journey</span>
-                    <h2 style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--color-brand-blue)' }}>
+                    <span style={{ color: 'var(--color-brand-blue)', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '1rem', display: 'block' }}>Your Journey</span>
+                    <h2 style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--color-brand-blue)' }}>
                         How It Works
                     </h2>
                     <p className="marathi" style={{ fontSize: '1.25rem', color: 'var(--color-secondary)', marginTop: '0.5rem' }}>
@@ -32,27 +32,27 @@ const ProcessSection: React.FC = () => {
                         <div key={step.num} className="glass-card" style={{
                             position: 'relative',
                             padding: '2.5rem',
-                            border: '1px solid #E5E7EB',
+                            border: '1px solid #E2E8F0',
                             background: '#FFFFFF',
-                            transition: 'transform 0.3s ease',
+                            transition: 'transform 0.3s ease, border-color 0.3s ease',
                         }}>
                             <style>{`
-                                .glass-card:hover { transform: translateY(-5px); border-color: var(--color-accent); }
+                                .glass-card:hover { transform: translateY(-5px); border-color: var(--color-brand-blue); }
                             `}</style>
                             <div style={{
                                 position: 'absolute',
                                 top: '-1.5rem', left: '2rem',
                                 width: '3rem', height: '3rem',
-                                background: '#F97316', // Orange 500
+                                background: '#1B5EA8',
                                 color: '#FFFFFF',
                                 borderRadius: '50%',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                fontWeight: 800, fontSize: '1.25rem',
-                                boxShadow: '0 4px 10px rgba(249, 115, 22, 0.4)'
+                                fontWeight: 700, fontSize: '1.25rem',
+                                boxShadow: '0 4px 10px rgba(27, 94, 168, 0.3)'
                             }}>
                                 {step.num}
                             </div>
-                            <h3 style={{ marginTop: '1rem', fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-brand-blue)', marginBottom: '0.75rem' }}>
+                            <h3 style={{ marginTop: '1rem', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-brand-blue)', marginBottom: '0.75rem' }}>
                                 {step.title}
                             </h3>
                             <p style={{ color: 'var(--color-secondary)', marginBottom: '0.5rem', fontSize: '1.1rem' }}>{step.desc}</p>

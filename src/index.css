@@ -1,35 +1,31 @@
 :root {
-  /* Light Wellness Palette */
-  --color-bg-light: #F9FAFB;
-  /* Warm Grey 50 - Main Background */
+  /* Omnifit Brand Palette */
+  --color-bg-light: #F8FAFD;
   --color-bg-white: #FFFFFF;
-  /* White - Card Background */
 
-  --color-primary: #1F2937;
-  /* Gray 800 - Primary Text (Soft Dark) */
-  --color-secondary: #4B5563;
-  /* Gray 600 - Secondary Text */
-  --color-muted: #9CA3AF;
-  /* Gray 400 - Muted Text */
+  --color-primary: #1E3A5F;
+  --color-secondary: #4A6FA5;
+  --color-muted: #4A6FA5;
 
-  --color-brand-blue: #1E3A8A;
-  /* Deep Blue - Headings/Accents */
-  --color-brand-green: #10B981;
-  /* Emerald 500 - Success/Health */
-  --color-accent: #F97316;
-  /* Orange 500 - Warm Coral Accent (CTAs) */
-  --color-accent-hover: #EA580C;
-  /* Orange 600 */
+  --color-brand-blue: #1B5EA8;
+  --color-brand-dark: #134280;
+  --color-accent-sky: #0EA5E9;
+  --color-navy: #0F2044;
+  --color-brand-green: #16A34A;
+  --color-brand-red: #DC2626;
 
-  /* Soft Pastel Gradients */
-  --gradient-hopeful: linear-gradient(135deg, #E0E7FF 0%, #F3E8FF 50%, #FFE4E6 100%);
-  /* Soft Blue -> Lavender -> Peach */
-  --gradient-card-glow: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
-  --gradient-primary-btn: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
-  /* Orange Gradient */
+  /* Deprecated orange replaced by primary blue */
+  --color-accent: #1B5EA8;
+  --color-accent-hover: #134280;
+
+  /* Gradients */
+  --gradient-hopeful: linear-gradient(135deg, #F8FAFD 0%, #EBF3FA 50%, #F0F7FF 100%);
+  --gradient-card-glow: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 253, 0.6) 100%);
+  --gradient-primary-btn: linear-gradient(135deg, #1B5EA8 0%, #134280 100%);
 
   /* Fonts */
-  --font-english: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
   --font-marathi: 'Mukta', sans-serif;
 
   /* Spacing */
@@ -37,22 +33,16 @@
   --width-container: 1200px;
 
   /* Light Theme Card */
-  --card-bg: rgba(255, 255, 255, 0.85);
-  /* More transparent for background to show */
-  --card-border: rgba(255, 255, 255, 0.6);
-  --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(27, 94, 168, 0.12);
+  --card-shadow: 0 10px 30px -5px rgba(15, 32, 68, 0.05), 0 4px 6px -2px rgba(15, 32, 68, 0.02);
   --card-radius: 1.5rem;
 }
 
 body {
   margin: 0;
-  font-family: var(--font-english);
+  font-family: var(--font-body);
   background-color: var(--color-bg-light);
-  /* Fallback */
-  /* Main Background gradient in body to avoid white flatness */
-  background-image:
-    radial-gradient(at 0% 0%, rgba(224, 231, 255, 0.3) 0%, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(255, 237, 213, 0.3) 0%, transparent 50%);
   color: var(--color-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -69,10 +59,18 @@ h5,
 h6 {
   margin: 0;
   line-height: 1.2;
+  font-family: var(--font-heading);
   color: var(--color-brand-blue);
-  /* Deep Blue for headings */
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+h1, h2 {
+  font-weight: 700;
+}
+
+h3, h4, h5, h6 {
+  font-weight: 600;
 }
 
 .marathi {
@@ -84,7 +82,7 @@ h6 {
 }
 
 button {
-  font-family: inherit;
+  font-family: var(--font-body);
   cursor: pointer;
 }
 
@@ -101,29 +99,30 @@ button {
   justify-content: center;
   padding: 1rem 2.5rem;
   border-radius: 9999px;
-  /* Rounded pill shape for friendly feel */
+  /* Fully rounded pill shape */
   font-weight: 700;
+  font-family: var(--font-heading);
   border: none;
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  text-transform: capitalize;
-  /* Friendlier than uppercase */
   font-size: 1.1rem;
   letter-spacing: 0.01em;
 }
 
 .btn-primary {
-  background: var(--gradient-primary-btn);
-  color: #FFFFFF;
-  box-shadow: 0 4px 6px rgba(249, 115, 22, 0.25);
-  /* Orange shadow */
+  background-color: #1B5EA8 !important;
+  background: #1B5EA8 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(27, 94, 168, 0.3);
 }
 
 .btn-primary:hover {
+  background-color: #134280 !important;
+  background: #134280 !important;
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 8px 20px rgba(19, 66, 128, 0.4);
   filter: brightness(1.05);
 }
 
@@ -135,17 +134,19 @@ button {
 /* Alternating Backgrounds */
 .section-light {
   background: transparent;
-  /* Allows fixed Background.tsx to show through */
 }
 
 .section-white {
-  background: rgba(255, 255, 255, 0.4);
-  /* Much more transparent */
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(8px);
-  /* Frosted glass effect */
   -webkit-backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid rgba(27, 94, 168, 0.08);
+  border-bottom: 1px solid rgba(27, 94, 168, 0.08);
+}
+
+.section-navy {
+  background-color: #0F2044 !important;
+  color: #FFFFFF !important;
 }
 
 /* Wellness Card Utility */
@@ -160,30 +161,25 @@ button {
 }
 
 .glass-card:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 20px 25px -5px rgba(27, 94, 168, 0.08), 0 10px 10px -5px rgba(27, 94, 168, 0.04);
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
 }
 
 .glass-panel {
-  background: rgba(249, 250, 251, 0.7);
-  /* Very light grey for panels inside white cards */
-  border: 1px solid rgba(243, 244, 246, 0.8);
+  background: rgba(248, 250, 253, 0.8);
+  border: 1px solid rgba(27, 94, 168, 0.1);
   border-radius: 1rem;
   transition: all 0.3s ease;
 }
 
 /* Text Gradient Utility */
 .text-gradient {
-  background: var(--color-brand-blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-brand-blue);
 }
 
 .text-gradient-accent {
-  color: var(--color-accent);
-  /* Solid orange is easier to read on light bg */
+  color: var(--color-brand-blue);
 }
 
 /* Section specific overrides */
@@ -193,6 +189,6 @@ button {
 
 /* Custom Highlight */
 .highlight {
-  color: var(--color-accent);
+  color: var(--color-brand-blue);
   font-weight: bold;
 }

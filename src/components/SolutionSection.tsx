@@ -7,7 +7,7 @@ const SolutionSection: React.FC = () => {
             <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
                     <span style={{
-                        color: 'var(--color-accent)',
+                        color: 'var(--color-brand-blue)',
                         fontWeight: 700,
                         letterSpacing: '2px',
                         textTransform: 'uppercase',
@@ -17,7 +17,7 @@ const SolutionSection: React.FC = () => {
                     }}>
                         The Omnifit Difference
                     </span>
-                    <h2 style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--color-brand-blue)' }}>
+                    <h2 style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--color-brand-blue)' }}>
                         Medical Science + <span className="text-gradient-accent">Helper Habits</span>
                     </h2>
                 </div>
@@ -37,15 +37,15 @@ const SolutionSection: React.FC = () => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                             <div style={{
                                 minWidth: '3.5rem', height: '3.5rem',
-                                background: '#E0E7FF', // Soft Indigo
+                                background: '#E0F2FE', // Soft Sky Blue
                                 borderRadius: '50%',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                color: '#4338CA', // Indigo 700
+                                color: '#0284C7',
                                 flexShrink: 0
                             }}>
                                 <Pill size={24} />
                             </div>
-                            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0, color: 'var(--color-brand-blue)', lineHeight: 1.2 }}>
+                            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, margin: 0, color: 'var(--color-brand-blue)', lineHeight: 1.2 }}>
                                 GLP-1 Medication Support
                             </h3>
                         </div>
@@ -67,12 +67,12 @@ const SolutionSection: React.FC = () => {
                                 background: '#DCFCE7', // Soft Green
                                 borderRadius: '50%',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                color: '#15803D', // Green 700
+                                color: '#16A34A',
                                 flexShrink: 0
                             }}>
                                 <Users size={24} />
                             </div>
-                            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0, color: 'var(--color-brand-blue)', lineHeight: 1.2 }}>
+                            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, margin: 0, color: 'var(--color-brand-blue)', lineHeight: 1.2 }}>
                                 Doctor & Community Support
                             </h3>
                         </div>
@@ -88,15 +88,15 @@ const SolutionSection: React.FC = () => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                             <div style={{
                                 minWidth: '3.5rem', height: '3.5rem',
-                                background: '#FEF3C7', // Soft Amber
+                                background: '#EBF3FA', // Soft Primary Blue
                                 borderRadius: '50%',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                color: '#B45309', // Amber 700
+                                color: '#1B5EA8',
                                 flexShrink: 0
                             }}>
                                 <Lightbulb size={24} />
                             </div>
-                            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0, color: 'var(--color-brand-blue)', lineHeight: 1.2 }}>
+                            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, margin: 0, color: 'var(--color-brand-blue)', lineHeight: 1.2 }}>
                                 Habit & Lifestyle Coaching
                             </h3>
                         </div>
@@ -119,11 +119,11 @@ const SolutionSection: React.FC = () => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         height: '100%',
-                        background: 'linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%)', // Very light orange tint
-                        border: '1px solid #FFEDD5'
+                        background: 'linear-gradient(135deg, #F0F7FF 0%, #FFFFFF 100%)',
+                        border: '1px solid rgba(27, 94, 168, 0.12)'
                     }}>
-                        <div style={{ fontSize: '5rem', fontWeight: 900, lineHeight: 1, marginBottom: '0.5rem', color: '#EA580C' }}>90%</div>
-                        <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--color-brand-blue)', fontWeight: 700 }}>Success Rate</div>
+                        <div style={{ fontSize: '5rem', fontWeight: 800, lineHeight: 1, marginBottom: '0.5rem', color: '#1B5EA8' }}>90%</div>
+                        <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--color-brand-blue)', fontWeight: 600 }}>Success Rate</div>
                         <p style={{ color: 'var(--color-secondary)', fontSize: '1rem' }}>Combine the power of biology and psychology.</p>
                     </div>
 

@@ -85,7 +85,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                     </p>
                     <p className="marathi" style={{
                         fontSize: '1.25rem',
-                        color: '#EF4444', // Red/Orange for distinct look as per common marathi styling preference
+                        color: 'var(--color-brand-blue)',
                         fontWeight: 600,
                         opacity: 1
                     }}>

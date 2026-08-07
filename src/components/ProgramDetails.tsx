@@ -18,13 +18,13 @@ const ProgramDetails: React.FC<ProgramDetailsProps> = ({ openModal }) => {
     ];
 
     return (
-        <section id="program" className="section" style={{ background: '#1E3A8A', color: 'white' }}>
+        <section id="program" className="section section-navy" style={{ backgroundColor: '#0F2044', color: '#FFFFFF' }}>
             <div className="container">
                 <div className="glass-card" style={{
                     padding: '4rem',
                     overflow: 'hidden',
                     position: 'relative',
-                    background: 'rgba(255, 255, 255, 0.05)', // Subtle transparent white on blue
+                    background: 'rgba(255, 255, 255, 0.04)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                     boxShadow: 'none'
                 }}>
@@ -37,19 +37,16 @@ const ProgramDetails: React.FC<ProgramDetailsProps> = ({ openModal }) => {
                         `}</style>
                         {/* Text and CTA on Left */}
                         <div>
-                            <span style={{ color: '#FCD34D', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '1rem', display: 'block' }}>Everything Included</span>
-                            <h2 style={{ fontSize: '3rem', fontWeight: 900, marginBottom: '1rem', color: '#FFFFFF' }}>
-                                The Complete<br /> Ecocystem
+                            <span style={{ color: '#0EA5E9', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '1rem', display: 'block' }}>Everything Included</span>
+                            <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', color: '#FFFFFF' }}>
+                                The Complete<br /> Ecosystem
                             </h2>
-                            <p className="marathi" style={{ fontSize: '1.25rem', color: '#E0E7FF', marginBottom: '2rem' }}>
+                            <p className="marathi" style={{ fontSize: '1.25rem', color: '#CBD5E1', marginBottom: '2rem' }}>
                                 सर्वसमावेशक प्रोग्राम जो तुमची जीवनशैली बदलतो.
                             </p>
                             <button onClick={openModal} className="btn btn-primary" style={{
-                                padding: '1rem 2rem',
-                                fontSize: '1.1rem',
-                                background: '#FFFFFF',
-                                color: '#1E3A8A',
-                                boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                                padding: '1rem 2.5rem',
+                                fontSize: '1.1rem'
                             }}>
                                 Check Eligibility Now
                             </button>
@@ -65,12 +62,12 @@ const ProgramDetails: React.FC<ProgramDetailsProps> = ({ openModal }) => {
                                 <div key={index} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem',
                                     padding: '1.25rem',
-                                    backgroundColor: 'rgba(255,255,255,0.1)',
+                                    backgroundColor: 'rgba(255,255,255,0.06)',
                                     borderRadius: '0.5rem',
                                     border: '1px solid rgba(255,255,255,0.1)'
                                 }}>
-                                    <div style={{ background: 'rgba(16, 185, 129, 0.2)', borderRadius: '50%', padding: '0.25rem', flexShrink: 0 }}>
-                                        <Check size={20} color="#34D399" />
+                                    <div style={{ background: 'rgba(22, 163, 74, 0.2)', borderRadius: '50%', padding: '0.25rem', flexShrink: 0 }}>
+                                        <Check size={20} color="#16A34A" />
                                     </div>
                                     <span style={{ fontSize: '1.1rem', color: '#FFFFFF', fontWeight: 500 }}>{feature}</span>
                                 </div>
