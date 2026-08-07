@@ -82,18 +82,12 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                 diseases: formData.diseases
             };
 
-            const params = new URLSearchParams();
-            Object.entries(payload).forEach(([key, val]) => {
-                params.append(key, val);
-            });
-
             await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'text/plain;charset=utf-8',
                 },
-                body: params.toString()
+                body: JSON.stringify(payload)
             });
 
             setIsSubmitted(true);
