@@ -60,8 +60,8 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         color: 'var(--color-brand-blue)'
                     }}
                 >
-                    The <span style={{ textDecoration: 'underline', textDecorationColor: 'var(--color-accent)', textUnderlineOffset: '8px' }}>New & Most Advanced</span> Science of <br />
-                    <span style={{ color: 'var(--color-accent)' }}>Safer, Easier Weight Loss</span>
+                    The <span style={{ textDecoration: 'underline', textDecorationColor: '#84CC16', textUnderlineOffset: '8px' }}>New & Most Advanced</span> Science of <br />
+                    <span style={{ color: '#84CC16' }}>Safer, Easier Weight Loss</span>
                 </motion.h1>
 
                 {/* Subheading + Marathi */}
