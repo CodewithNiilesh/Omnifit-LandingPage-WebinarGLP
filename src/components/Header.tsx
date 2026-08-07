@@ -47,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({ openModal }) => {
             <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 {/* Logo */}
                 <div className="logo" style={{ display: 'flex', alignItems: 'center', transition: 'color 0.3s ease' }}>
-                    <img src="/omnifit_logo.png" alt="Omnifit" style={{ height: '36px', objectFit: 'contain' }} />
+                    <img src="/omnifit_logo.png" alt="Omnifit" style={{ height: '48px', objectFit: 'contain', mixBlendMode: 'multiply' }} />
                 </div>
 
                 {/* Desktop Nav */}
