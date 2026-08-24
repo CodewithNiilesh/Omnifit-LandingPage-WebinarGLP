@@ -15,7 +15,7 @@ export const FloatingWhatsApp: React.FC = () => {
             onClick={handleClick}
             style={{
                 position: 'fixed',
-                bottom: '20px',
+                bottom: '85px',
                 right: '20px',
                 width: '56px',
                 height: '56px',
