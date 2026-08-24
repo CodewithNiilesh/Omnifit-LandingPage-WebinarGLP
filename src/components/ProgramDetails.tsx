@@ -11,7 +11,7 @@ const ProgramDetails: React.FC<ProgramDetailsProps> = ({ openModal }) => {
         "Weekly Progress Review by Doctor",
         "Personalized Diet Plans (Maharashtrian Friendly)",
         "Home Workout Guidance",
-        "GLP-1 Medication Prescription (if eligible)",
+        "Medical assessment, and a prescription only if the doctor considers it suitable for you",
         "Metabolic Health Analysis",
         "Daily Accountability Tracking",
         "Access to Omnifit Community"

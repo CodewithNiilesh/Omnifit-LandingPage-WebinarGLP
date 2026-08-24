@@ -15,8 +15,8 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: '90vh', // Almost full height
-            background: 'var(--gradient-hopeful)', // Light Hopeful Gradient
+            minHeight: '90vh',
+            background: 'var(--gradient-hopeful)',
             overflow: 'hidden'
         }}>
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
@@ -53,15 +53,15 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     style={{
-                        fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', // Slightly smaller for longer text
-                        fontWeight: 900,
+                        fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                        fontWeight: 700,
                         marginBottom: '1.5rem',
                         lineHeight: 1.1,
                         color: 'var(--color-brand-blue)'
                     }}
                 >
-                    The <span style={{ textDecoration: 'underline', textDecorationColor: '#84CC16', textUnderlineOffset: '8px' }}>New & Most Advanced</span> Science of <br />
-                    <span style={{ color: '#84CC16' }}>Safer, Easier Weight Loss</span>
+                    The <span style={{ textDecoration: 'underline', textDecorationColor: '#84CC16', textUnderlineOffset: '8px' }}>Science</span> of <br />
+                    <span style={{ color: '#84CC16' }}>Simpler, Sustainable Weight Loss</span>
                 </motion.h1>
 
                 {/* Subheading + Marathi */}
@@ -81,7 +81,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         fontWeight: 500,
                         lineHeight: 1.5
                     }}>
-                        Reset your metabolism with doctor‑led GLP‑1 protocols & habit psychology – <br className="hidden md:block" /> one of the most advanced ways to lose weight sustainably.
+                        Understand your body with doctor‑led GLP‑1 protocols & habit psychology – <br className="hidden md:block" /> a structured way to lose weight sustainably.
                     </p>
                     <p className="marathi" style={{
                         fontSize: '1.25rem',
@@ -89,7 +89,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         fontWeight: 600,
                         opacity: 1
                     }}>
-                        वैद्यकीय मार्गदर्शनाखाली GLP‑1 आणि lifestyle बदल यांच्या मदतीने वजन कमी करण्याचा नवा, विज्ञानाधारित आणि सुरक्षित मार्ग.
+                        वैद्यकीय मार्गदर्शनाखाली GLP‑1 आणि lifestyle बदल यांच्या मदतीने वजन कमी करण्याचा विज्ञानाधारित मार्ग.
                     </p>
                 </motion.div>
 
@@ -117,7 +117,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                         <Calendar size={24} color="var(--color-brand-blue)" />
-                        <span>Saturday, 15th Aug</span>
+                        <span>Saturday, 29th Aug</span>
                     </div>
                     <div style={{
                         display: 'flex',
@@ -135,9 +135,9 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         gap: '0.75rem',
                         borderLeft: '2px solid rgba(0,0,0,0.1)',
                         paddingLeft: '1.5rem',
-                        color: '#EF4444' // Red color to stand out as "Live"
+                        color: '#DC2626'
                     }}>
-                        <Video size={24} color="#EF4444" />
+                        <Video size={24} color="#DC2626" />
                         <span>Live On Zoom</span>
                     </div>
                 </motion.div>
@@ -153,6 +153,9 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                     </button>
                     <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--color-muted)' }}>
                         Limited Spots • Live with Coach Niilesh
+                    </p>
+                    <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#4A6FA5', maxWidth: '600px', margin: '0.5rem auto 0 auto' }}>
+                        Prescription-only medicine. Doctor assessment required. Not suitable for everyone. Results vary. Works alongside diet, exercise and habit change.
                     </p>
                 </motion.div>
 

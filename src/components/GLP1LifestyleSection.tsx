@@ -71,7 +71,7 @@ const GLP1LifestyleSection: React.FC = () => {
                         <p style={{ color: '#1E3A5F' }}>Slows digestion slightly so you feel satisfied with smaller, healthier portions.</p>
                     </div>
                     <div className="glass-card" style={{ padding: '2rem', background: '#E0F2FE', border: '1px solid #7DD3FC' }}>
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0EA5E9', marginBottom: '0.5rem' }}>⚡ Metabolic Reset</h3>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0EA5E9', marginBottom: '0.5rem' }}>⚡ Metabolic Support</h3>
                         <p style={{ color: '#1E3A5F' }}>Improve insulin sensitivity and helps your body burn fat effectively.</p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@ const GLP1LifestyleSection: React.FC = () => {
                     }}
                 >
                     <p style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1B5EA8', margin: 0 }}>
-                        ⚠️ &nbsp; Note: GLP-1 is not a magic pill – it works best when combined with lifestyle changes and medical supervision.
+                        ⚠️ &nbsp; Note: GLP-1 is a medical tool – it works best when combined with lifestyle changes and medical supervision.
                     </p>
                 </motion.div>
 

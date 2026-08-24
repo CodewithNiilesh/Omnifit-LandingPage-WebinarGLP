@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle2, AlertCircle } from 'lucide-react';
+import { track } from '../lib/analytics';
 
 interface RegistrationModalProps {
     isOpen: boolean;
@@ -13,6 +14,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
+    const [isAgeConfirmed, setIsAgeConfirmed] = useState(false);
     const [formData, setFormData] = useState({
         fullName: '',
         whatsappNo: '',
@@ -20,7 +22,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
         city: '',
         height: '',
         weight: '',
-        diseases: ''
+        diseases: '',
+        hp: ''
     });
 
     const calculateBMI = () => {
@@ -63,11 +66,24 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Honeypot check for bots
+        if (formData.hp) {
+            setIsSubmitted(true);
+            return;
+        }
+
+        if (!isAgeConfirmed) {
+            setErrorMsg('Please confirm that you are 18 years of age or older.');
+            return;
+        }
+
         setIsSubmitting(true);
         setErrorMsg('');
 
         try {
             const payload: Record<string, string> = {
+                form_id: 'webinar_registration',
                 source: 'Webinar Page',
                 Source: 'Webinar Page',
                 name: formData.fullName,
@@ -79,7 +95,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                 height: formData.height,
                 weight: formData.weight,
                 bmi: bmi || '',
-                diseases: formData.diseases
+                diseases: formData.diseases,
+                hp: formData.hp
             };
 
             await fetch(GOOGLE_SCRIPT_URL, {
@@ -90,13 +107,16 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                 body: JSON.stringify(payload)
             });
 
+            track('webinar_registered', { form_id: 'webinar_registration' });
             setIsSubmitted(true);
             setIsSubmitting(false);
+
             setTimeout(() => {
                 onClose();
                 setIsSubmitted(false);
-                setFormData({ fullName: '', whatsappNo: '', email: '', city: '', height: '', weight: '', diseases: '' });
-            }, 4000);
+                setIsAgeConfirmed(false);
+                setFormData({ fullName: '', whatsappNo: '', email: '', city: '', height: '', weight: '', diseases: '', hp: '' });
+            }, 8000);
         } catch (err) {
             console.error('Lead submission failed:', err);
             setErrorMsg('Failed to submit form. Please check your network connection and try again.');
@@ -149,6 +169,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                     >
                         <button
                             onClick={onClose}
+                            aria-label="Close registration modal"
                             style={{
                                 position: 'absolute',
                                 top: '1.5rem',
@@ -156,23 +177,61 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                 background: 'none',
                                 border: 'none',
                                 cursor: 'pointer',
-                                color: '#4A6FA5'
+                                color: '#4A6FA5',
+                                zIndex: 10
                             }}
                         >
                             <X size={24} />
                         </button>
 
                         {isSubmitted ? (
-                            <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+                            <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
                                 <motion.div
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
                                     transition={{ type: "spring", bounce: 0.5 }}
                                 >
-                                    <CheckCircle2 size={64} color="#16A34A" style={{ margin: '0 auto 1.5rem auto' }} />
+                                    <CheckCircle2 size={56} color="#16A34A" style={{ margin: '0 auto 1rem auto' }} />
                                 </motion.div>
-                                <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-brand-blue)', marginBottom: '1rem' }}>Registration Successful!</h2>
-                                <p style={{ color: 'var(--color-secondary)' }}>Thank you for registering. You will receive the Zoom link details on your WhatsApp shortly.</p>
+
+                                {/* WhatsApp Community Card */}
+                                <div style={{
+                                    background: '#F0FDF4',
+                                    border: '1px solid #BBF7D0',
+                                    borderRadius: '12px',
+                                    padding: '1.5rem 1.25rem',
+                                    marginBottom: '1rem',
+                                    textAlign: 'center'
+                                }}>
+                                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#16A34A', marginBottom: '0.5rem' }}>You're registered.</h3>
+                                    <p style={{ fontSize: '0.95rem', color: '#1E3A5F', marginBottom: '1.25rem', lineHeight: 1.5 }}>
+                                        Join our WhatsApp Community so you don't miss the joining link and reminders.
+                                    </p>
+                                    <a
+                                        href="https://chat.whatsapp.com/GQy7BNL7jAy8yoitWiRUqP"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => track('channel_joined')}
+                                        style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            padding: '0.85rem 1.75rem',
+                                            backgroundColor: '#25D366',
+                                            color: '#FFFFFF',
+                                            borderRadius: '9999px',
+                                            fontWeight: 700,
+                                            fontSize: '1rem',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 4px 12px rgba(37, 211, 102, 0.3)'
+                                        }}
+                                    >
+                                        Join the Omnifit Community
+                                    </a>
+                                    <p style={{ fontSize: '0.8rem', color: '#4A6FA5', marginTop: '0.85rem', marginBottom: 0 }}>
+                                        We'll also message you the link on WhatsApp before the session.
+                                    </p>
+                                </div>
                             </div>
                         ) : (
                             <>
@@ -198,6 +257,17 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                 )}
 
                                 <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
+                                    {/* Honeypot Input */}
+                                    <input
+                                        type="text"
+                                        name="hp"
+                                        value={formData.hp}
+                                        onChange={handleChange}
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                        style={{ display: 'none', position: 'absolute', left: '-9999px' }}
+                                    />
+
                                     <div>
                                         <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, color: '#1E3A5F', marginBottom: '0.5rem' }}>Full Name *</label>
                                         <input
@@ -319,18 +389,35 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                             <option value="Hypertension">Hypertension (High BP)</option>
                                             <option value="Other">Other</option>
                                         </select>
+                                        <p style={{ fontSize: '0.75rem', color: '#4A6FA5', marginTop: '0.35rem' }}>
+                                            We'll use this only to decide which programme suits you and to prepare for your consultation. We won't use it for advertising.
+                                        </p>
+                                    </div>
+
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
+                                        <input
+                                            type="checkbox"
+                                            id="ageConfirm"
+                                            required
+                                            checked={isAgeConfirmed}
+                                            onChange={(e) => setIsAgeConfirmed(e.target.checked)}
+                                            style={{ width: '1.1rem', height: '1.1rem', accentColor: '#1B5EA8', cursor: 'pointer' }}
+                                        />
+                                        <label htmlFor="ageConfirm" style={{ fontSize: '0.85rem', color: '#1E3A5F', cursor: 'pointer', fontWeight: 500 }}>
+                                            I confirm I am 18 years of age or older.
+                                        </label>
                                     </div>
 
                                     <button
                                         type="submit"
-                                        disabled={isSubmitting}
+                                        disabled={isSubmitting || !isAgeConfirmed}
                                         className="btn btn-primary"
-                                        style={{ width: '100%', padding: '1rem', fontSize: '1.1rem', marginTop: '1rem', opacity: isSubmitting ? 0.7 : 1 }}
+                                        style={{ width: '100%', padding: '1rem', fontSize: '1.1rem', marginTop: '0.5rem', opacity: (isSubmitting || !isAgeConfirmed) ? 0.7 : 1 }}
                                     >
                                         {isSubmitting ? 'Registering...' : 'Confirm Registration'}
                                     </button>
                                     <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#4A6FA5', marginTop: '0.5rem' }}>
-                                        Your information is secure. We will only use this to send you webinar updates.
+                                        We'll use this to send you webinar details and to prepare for your consultation. We never share it with advertisers.
                                     </p>
                                 </form>
                             </>

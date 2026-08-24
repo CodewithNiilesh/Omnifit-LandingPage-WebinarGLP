@@ -5,13 +5,13 @@ import { CheckCircle2, XCircle, ArrowRight, ChevronDown, Calendar, Clock, Video 
 export const WebinarDetails: React.FC = () => {
     const curriculum = [
         "What GLP-1 medications are and how they help control cravings and support weight loss.",
-        "Who is medically eligible: BMI criteria, lifestyle diseases, safety guidelines.",
+        "Who is medically eligible: BMI criteria, health parameters, safety guidelines.",
         "Why willpower, diets, and exercise alone often fail – role of hormones & emotions.",
         "How doctor-supervised GLP-1 + lifestyle support can make weight loss feel simpler and more sustainable.",
         "How Omnifit supports you with diet, exercise, mindset, app & community.",
         "Safety, side effects, myths vs facts – explained clearly in Marathi + English.",
-        "Step-by-step roadmap from obese and stuck to lighter, more energetic, more confident.",
-        "How to apply for the Omnifit GLP-1 Lifestyle Program after the webinar, if you qualify."
+        "Step-by-step roadmap towards becoming lighter, more energetic, and more confident.",
+        "How to apply for the Omnifit GLP-1 Lifestyle Program after the webinar, if suitable."
     ];
 
     return (
@@ -74,7 +74,7 @@ export const AudienceSection: React.FC = () => {
                             <XCircle size={32} /> NOT For You If...
                         </h3>
                         <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '1.2rem' }}>
-                            {['Looking for a magic pill', 'Pregnant or nursing', 'Not willing to change habits', 'Want overnight results'].map(i => (
+                            {['Looking for a quick fix', 'Pregnant or nursing', 'Not willing to change habits', 'Want overnight results'].map(i => (
                                 <li key={i} style={{ display: 'flex', gap: '0.75rem', color: 'var(--color-secondary)', fontSize: '1.1rem' }}>
                                     <span style={{ color: '#DC2626', fontWeight: 'bold' }}>✕</span> {i}
                                 </li>
@@ -100,7 +100,7 @@ export const TestimonialsSection: React.FC = () => {
             id: 2,
             name: 'Priya Kadam',
             result: 'Lost 10kg',
-            quote: "Dr. Omkar made me understand why my previous diets failed. The scientifically backed GLP-1 approach finally gave me results.",
+            quote: "Dr. Omkar made me understand why my previous diets failed. Understanding the science behind it finally made the difference.",
             image: "/testimonial_priya.png"
         },
         {
@@ -120,10 +120,10 @@ export const TestimonialsSection: React.FC = () => {
                     {testimonials.map((t) => (
                         <div key={t.id} className="glass-card" style={{ padding: '2.5rem', background: '#FFFFFF' }}>
                             <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1.5rem', color: '#1B5EA8' }}>★★★★★</div>
-                            <p style={{ fontStyle: 'italic', marginBottom: '2rem', color: 'var(--color-secondary)', fontSize: '1.1rem', lineHeight: 1.6 }}>
+                            <p style={{ fontStyle: 'italic', marginBottom: '1.5rem', color: 'var(--color-secondary)', fontSize: '1.1rem', lineHeight: 1.6 }}>
                                 "{t.quote}"
                             </p>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderTop: '1px solid #E2E8F0', paddingTop: '1.5rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderTop: '1px solid #E2E8F0', paddingTop: '1.5rem', marginBottom: '1rem' }}>
                                 <div style={{ width: '3rem', height: '3rem', borderRadius: '50%', overflow: 'hidden', backgroundColor: '#E2E8F0' }}>
                                     <img src={t.image} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 </div>
@@ -132,6 +132,9 @@ export const TestimonialsSection: React.FC = () => {
                                     <div style={{ fontSize: '0.9rem', color: '#16A34A', fontWeight: 600 }}>{t.result}</div>
                                 </div>
                             </div>
+                            <p style={{ fontSize: '0.75rem', color: '#9CA3AF', margin: 0, lineHeight: 1.4 }}>
+                                Shared with permission. This is one person's experience. Results vary from person to person and are not typical or guaranteed.
+                            </p>
                         </div>
                     ))}
                 </div>
@@ -146,11 +149,11 @@ export const FAQSection: React.FC = () => {
     const faqs = [
         {
             q: "Is GLP-1 safe for me?",
-            a: "Yes, when prescribed by a qualified doctor. It is FDA-approved and has been used safely for years. At Omnifit, Dr. Omkar personally checks your medical history, BMI, and blood reports before prescribing to ensure it is 100% safe for you."
+            a: "GLP-1 medicines are prescription-only and are not suitable for everyone. Like any medicine, they carry real side effects — most commonly nausea, vomiting and digestive discomfort, and less commonly more serious effects. That is exactly why Dr. Omkar reviews your medical history, measurements and blood reports before deciding whether to prescribe, and why you stay under supervision throughout. If it is not right for you, he will tell you so."
         },
         {
             q: "Will I have to take injections forever?",
-            a: "Not necessarily. Our goal is to use the medication as a tool to 'reset' your metabolism while we build your lifestyle habits. Once you reach your goal weight and your metabolic health improves, we guide you through a weaning-off process to maintain results naturally."
+            a: "Not necessarily. The aim is to use the medicine as one supervised tool while you build eating, movement and sleep habits with your coach. When and how anyone steps down is a decision your doctor makes with you, based on how you are doing. Nobody can promise a timeline in advance."
         },
         {
             q: "What if I stop the medication?",
@@ -162,7 +165,7 @@ export const FAQSection: React.FC = () => {
         },
         {
             q: "Can I join if I have diabetes / thyroid / PCOS?",
-            a: "Absolutely. In fact, GLP-1 medications are often highly effective for improving insulin sensitivity and hormonal balance in these conditions. Dr. Omkar will review your specific case to ensure the safest and most effective approach for you."
+            a: "Many people who join us are living with one of these. Whether the programme is right for you is a medical decision, not something we can answer on a web page — Dr. Omkar reviews your history, your medicines and your blood reports, and tells you honestly either way. Some people are not suitable, and we say so."
         },
         {
             q: "Is the webinar live or recorded?",
@@ -174,7 +177,7 @@ export const FAQSection: React.FC = () => {
         },
         {
             q: "What happens after the webinar if I want to join the Omnifit program?",
-            a: "At the end of the webinar, we will share a special link to book a 1:1 Consultation with our team. In that call, we will confirm your eligibility and help you get started with your customized plan."
+            a: "At the end of the webinar, we will share a special link to book a 1:1 Consultation with our team. In that call, we will check whether the programme is suitable for you and help you get started with your customized plan."
         }
     ];
 
@@ -241,6 +244,8 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
     const socialIcons = [
         {
             name: 'Instagram',
+            url: 'https://www.instagram.com/omnifitcare/',
+            ariaLabel: 'Follow Omnifit on Instagram',
             path: (
                 <>
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -251,19 +256,32 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
         },
         {
             name: 'Facebook',
+            url: 'https://www.facebook.com/omnifitcare',
+            ariaLabel: 'Follow Omnifit on Facebook',
             path: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
         },
         {
-            name: 'Whatsapp',
-            path: <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
-        },
-        {
-            name: 'X',
-            path: <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            name: 'YouTube',
+            url: 'https://www.youtube.com/channel/UCWGk6BKJaUruIkQ9-kHZgWg',
+            ariaLabel: 'Subscribe to Omnifit on YouTube',
+            path: (
+                <>
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+                </>
+            )
         },
         {
             name: 'LinkedIn',
+            url: 'https://www.linkedin.com/company/omnifithealthcare/',
+            ariaLabel: 'Connect with Omnifit on LinkedIn',
             path: <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" />
+        },
+        {
+            name: 'Whatsapp',
+            url: 'https://wa.me/919662736273',
+            ariaLabel: 'Contact Omnifit on WhatsApp',
+            path: <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
         }
     ];
 
@@ -293,7 +311,7 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
                 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <Calendar size={22} color="#0EA5E9" />
-                        <span>Saturday, 15th Aug</span>
+                        <span>Saturday, 29th Aug</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <Clock size={22} color="#0EA5E9" />
@@ -305,21 +323,35 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
                     </div>
                 </div>
 
-                <button onClick={openModal} className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.25rem', marginBottom: '3rem' }}>
-                    Join Webinar Now <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
-                </button>
+                <div>
+                    <button onClick={openModal} className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.25rem', marginBottom: '0.75rem' }}>
+                        Join Webinar Now <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
+                    </button>
+                    <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', maxWidth: '600px', margin: '0.5rem auto 3rem auto' }}>
+                        Prescription-only medicine. Doctor assessment required. Not suitable for everyone. Results vary. Works alongside diet, exercise and habit change.
+                    </p>
+                </div>
 
                 {/* Social Icons */}
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
                     {socialIcons.map((icon, i) => (
-                        <a key={i} href="#" style={{ color: 'rgba(255,255,255,0.6)', transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#fff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}>
+                        <a
+                            key={i}
+                            href={icon.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={icon.ariaLabel}
+                            style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.3s' }}
+                            onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
                                 height="24"
                                 viewBox="0 0 24 24"
-                                fill={icon.name === 'Whatsapp' || icon.name === 'X' ? 'currentColor' : 'none'}
-                                stroke={icon.name === 'Whatsapp' || icon.name === 'X' ? 'none' : 'currentColor'}
+                                fill={icon.name === 'Whatsapp' ? 'currentColor' : 'none'}
+                                stroke={icon.name === 'Whatsapp' ? 'none' : 'currentColor'}
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -332,13 +364,17 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
 
                 <div style={{ paddingTop: '2rem', fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', marginTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)', lineHeight: 1.6 }}>
                     <p style={{ marginBottom: '1rem' }}>
-                        © 2026 Omnifit Health. All rights reserved. <br />
-                        Medical Disclaimer: Results vary. Consult doctor before starting.
+                        © 2026 Omnifit Healthcare LLP. All rights reserved.
                     </p>
-                    <p style={{ fontSize: '0.75rem', opacity: 0.7, maxWidth: '800px', margin: '0 auto' }}>
+                    <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.65)', maxWidth: '850px', margin: '0 auto 1rem auto', lineHeight: 1.6 }}>
+                        Individual results may vary. GLP-1 medicines are prescription-only and are prescribed solely by a licensed Registered Medical Practitioner, after a full medical assessment. They are not suitable for everyone. Medicines are dispensed and supplied by licensed third-party pharmacies — Omnifit Healthcare LLP does not manufacture or sell pharmaceutical products. This programme combines medical supervision with diet, exercise and habit coaching. Nothing on this page is intended to diagnose, cure, treat or prevent any disease. Always consult your own doctor before starting, stopping or changing any medicine.
+                    </p>
+                    <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.65)', maxWidth: '850px', margin: '0 auto 1.5rem auto' }}>
+                        Omnifit Healthcare LLP is independent and is not affiliated with, endorsed by, or sponsored by Meta Platforms, Google, or any social media or search platform.
+                    </p>
+                    <p style={{ fontSize: '0.75rem', opacity: 0.6, maxWidth: '800px', margin: '0 auto' }}>
                         This site is not a part of the Meta™ website or Meta™ Inc. Additionally, This site is NOT endorsed by Meta™ in any way. META™ is a trademark of META™, Inc. <br />
-                        This site is not a part of the Google™ website or Google™ Inc. Additionally, This site is NOT endorsed by Google™ in any way. GOOGLE™ is a trademark of GOOGLE™, Inc. <br />
-                        Disclaimer: This landing page is for educational purposes only.
+                        This site is not a part of the Google™ website or Google™ Inc. Additionally, This site is NOT endorsed by Google™ in any way. GOOGLE™ is a trademark of GOOGLE™, Inc.
                     </p>
                 </div>
             </div>

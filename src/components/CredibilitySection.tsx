@@ -37,7 +37,7 @@ const CredibilitySection: React.FC = () => {
                             </div>
                             <p style={{ color: '#1B5EA8', fontWeight: 600, marginBottom: '1.5rem', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '1px' }}>MBBS, MD (Medicine)</p>
                             <p style={{ color: 'var(--color-secondary)', fontSize: '1.1rem', lineHeight: 1.6 }}>
-                                Specialist in Metabolic Health and Weight Management. Uses scientific protocols to reverse obesity.
+                                Specialist in Metabolic Health and Weight Management. 10+ years in clinical practice.
                             </p>
                         </div>
                     </div>

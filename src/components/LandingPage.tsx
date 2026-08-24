@@ -9,11 +9,17 @@ import ProcessSection from './ProcessSection';
 import ProgramDetails from './ProgramDetails';
 import { WebinarDetails, AudienceSection, TestimonialsSection, FAQSection, Footer } from './AdditionalSections';
 import RegistrationModal from './RegistrationModal';
+import { FloatingWhatsApp } from './FloatingWhatsApp';
+import { ConsentBanner } from './ConsentBanner';
+import { track } from '../lib/analytics';
 
 const LandingPage: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = () => setIsModalOpen(true);
+    const openModal = () => {
+        setIsModalOpen(true);
+        track('registration_started');
+    };
     const closeModal = () => setIsModalOpen(false);
 
     return (
@@ -34,6 +40,8 @@ const LandingPage: React.FC = () => {
             </main>
             <Footer openModal={openModal} />
 
+            <FloatingWhatsApp />
+            <ConsentBanner />
             <RegistrationModal isOpen={isModalOpen} onClose={closeModal} />
         </div>
     );

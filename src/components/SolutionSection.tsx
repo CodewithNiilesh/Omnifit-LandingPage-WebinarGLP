@@ -26,7 +26,7 @@ const SolutionSection: React.FC = () => {
                     <style>{`
                         @media (min-width: 768px) {
                             .solution-grid-container { 
-                                grid-template-columns: 1fr 1fr !important;
+                                grid-template-columns: repeat(3, 1fr) !important;
                                 gap: 2rem;
                             }
                         }
@@ -37,7 +37,7 @@ const SolutionSection: React.FC = () => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                             <div style={{
                                 minWidth: '3.5rem', height: '3.5rem',
-                                background: '#E0F2FE', // Soft Sky Blue
+                                background: '#E0F2FE',
                                 borderRadius: '50%',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 color: '#0284C7',
@@ -51,7 +51,7 @@ const SolutionSection: React.FC = () => {
                         </div>
                         <div>
                             <p style={{ color: 'var(--color-secondary)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
-                                FDA-approved approach to reset your hunger signals and reduce food noise.
+                                Doctor-supervised medical approach to help manage hunger signals and reduce food noise.
                             </p>
                             <p className="marathi" style={{ fontSize: '1rem', color: 'var(--color-primary)', opacity: 0.8 }}>
                                 भूक नियंत्रित करण्यासाठी वैद्यकीय मदत.
@@ -64,7 +64,7 @@ const SolutionSection: React.FC = () => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                             <div style={{
                                 minWidth: '3.5rem', height: '3.5rem',
-                                background: '#DCFCE7', // Soft Green
+                                background: '#DCFCE7',
                                 borderRadius: '50%',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 color: '#16A34A',
@@ -88,7 +88,7 @@ const SolutionSection: React.FC = () => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                             <div style={{
                                 minWidth: '3.5rem', height: '3.5rem',
-                                background: '#EBF3FA', // Soft Primary Blue
+                                background: '#EBF3FA',
                                 borderRadius: '50%',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 color: '#1B5EA8',
@@ -108,23 +108,6 @@ const SolutionSection: React.FC = () => {
                                 चांगल्या सवयी, निरोगी जीवन.
                             </p>
                         </div>
-                    </div>
-
-                    {/* Item 4: Success Rate Card */}
-                    <div className="glass-card" style={{
-                        padding: '2.5rem',
-                        textAlign: 'center',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        height: '100%',
-                        background: 'linear-gradient(135deg, #F0F7FF 0%, #FFFFFF 100%)',
-                        border: '1px solid rgba(27, 94, 168, 0.12)'
-                    }}>
-                        <div style={{ fontSize: '5rem', fontWeight: 800, lineHeight: 1, marginBottom: '0.5rem', color: '#1B5EA8' }}>90%</div>
-                        <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--color-brand-blue)', fontWeight: 600 }}>Success Rate</div>
-                        <p style={{ color: 'var(--color-secondary)', fontSize: '1rem' }}>Combine the power of biology and psychology.</p>
                     </div>
 
                 </div>
