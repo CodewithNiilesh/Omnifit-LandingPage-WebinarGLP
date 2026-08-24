@@ -56,12 +56,12 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
                         fontWeight: 700,
                         marginBottom: '1.5rem',
-                        lineHeight: 1.1,
+                        lineHeight: 1.25,
                         color: 'var(--color-brand-blue)'
                     }}
                 >
                     The <span style={{ textDecoration: 'underline', textDecorationColor: '#84CC16', textUnderlineOffset: '8px' }}>Science</span> of <br />
-                    <span style={{ color: '#84CC16' }}>Simpler, Sustainable Weight Loss</span>
+                    <span style={{ display: 'inline-block', marginTop: '0.4rem', color: '#84CC16' }}>Simpler, Sustainable Weight Loss</span>
                 </motion.h1>
 
                 {/* Subheading + Marathi */}
