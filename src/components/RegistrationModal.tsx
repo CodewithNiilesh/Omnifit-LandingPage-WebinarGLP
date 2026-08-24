@@ -208,7 +208,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                 }}>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#16A34A', marginBottom: '0.5rem' }}>You're registered.</h3>
                                     <p style={{ fontSize: '0.95rem', color: '#1E3A5F', marginBottom: '1.25rem', lineHeight: 1.5 }}>
-                                        Join our WhatsApp Channel so you don't miss the joining link and reminders.
+                                        Join our WhatsApp Community so you don't miss the joining link and reminders.
                                     </p>
                                     <a
                                         href="https://chat.whatsapp.com/GQy7BNL7jAy8yoitWiRUqP"
@@ -229,7 +229,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                             boxShadow: '0 4px 12px rgba(37, 211, 102, 0.3)'
                                         }}
                                     >
-                                        Join the Omnifit Channel
+                                        Join the Omnifit Community
                                     </a>
                                     <p style={{ fontSize: '0.8rem', color: '#4A6FA5', marginTop: '0.85rem', marginBottom: 0 }}>
                                         We'll also message you the link on WhatsApp before the session.
