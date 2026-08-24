@@ -74,7 +74,7 @@ export const AudienceSection: React.FC = () => {
                             <XCircle size={32} /> NOT For You If...
                         </h3>
                         <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '1.2rem' }}>
-                            {['Looking for a quick fix', 'Pregnant or nursing', 'Not willing to change habits', 'Want overnight results'].map(i => (
+                            {['Looking for a magic pill', 'Pregnant or nursing', 'Not willing to change habits', 'Want overnight results'].map(i => (
                                 <li key={i} style={{ display: 'flex', gap: '0.75rem', color: 'var(--color-secondary)', fontSize: '1.1rem' }}>
                                     <span style={{ color: '#DC2626', fontWeight: 'bold' }}>✕</span> {i}
                                 </li>

@@ -1,0 +1,46 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2044" />
+      <stop offset="100%" stop-color="#134280" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  
+  <!-- Decorative Circles -->
+  <circle cx="1050" cy="120" r="280" fill="#1B5EA8" opacity="0.2" />
+  <circle cx="120" cy="520" r="220" fill="#0EA5E9" opacity="0.15" />
+
+  <!-- Category Badge -->
+  <rect x="100" y="85" width="340" height="42" rx="21" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" />
+  <text x="270" y="112" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#84CC16" text-anchor="middle" letter-spacing="1.5">DOCTOR-LED MASTERCLASS</text>
+
+  <!-- Main Headline -->
+  <text x="100" y="215" font-family="Helvetica, Arial, sans-serif" font-size="52" font-weight="900" fill="#FFFFFF">The Science of Simpler,</text>
+  <text x="100" y="285" font-family="Helvetica, Arial, sans-serif" font-size="52" font-weight="900" fill="#84CC16">Sustainable Weight Loss</text>
+
+  <!-- Subtitle -->
+  <text x="100" y="355" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#CBD5E1">Understand GLP-1 Protocols and Habit Psychology for Long-Term Results</text>
+
+  <!-- Divider -->
+  <line x1="100" y1="415" x2="1100" y2="415" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+
+  <!-- Info Boxes -->
+  <g transform="translate(100, 460)">
+    <!-- Date Box -->
+    <rect x="0" y="0" width="300" height="80" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" />
+    <text x="20" y="32" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#0EA5E9" font-weight="bold" letter-spacing="1">DATE &amp; TIME</text>
+    <text x="20" y="60" font-family="Helvetica, Arial, sans-serif" font-size="19" fill="#FFFFFF" font-weight="bold">Sat, 29th Aug • 7 PM IST</text>
+
+    <!-- Host Box -->
+    <rect x="330" y="0" width="380" height="80" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" />
+    <text x="350" y="32" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#84CC16" font-weight="bold" letter-spacing="1">EXPERT HOSTS</text>
+    <text x="350" y="60" font-family="Helvetica, Arial, sans-serif" font-size="19" fill="#FFFFFF" font-weight="bold">Dr. Omkar (MD) &amp; Coach Niilesh</text>
+
+    <!-- Branding -->
+    <text x="980" y="48" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="end">OMNIFIT</text>
+    <text x="980" y="68" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#84CC16" font-weight="bold" letter-spacing="1" text-anchor="end">HEALTHCARE</text>
+  </g>
+</svg>

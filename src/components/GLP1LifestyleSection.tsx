@@ -138,7 +138,7 @@ const GLP1LifestyleSection: React.FC = () => {
                     }}
                 >
                     <p style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1B5EA8', margin: 0 }}>
-                        ⚠️ &nbsp; Note: GLP-1 is a medical tool – it works best when combined with lifestyle changes and medical supervision.
+                        ⚠️ &nbsp; Note: GLP-1 is not a magic pill – it works best when combined with lifestyle changes and medical supervision.
                     </p>
                 </motion.div>
 
