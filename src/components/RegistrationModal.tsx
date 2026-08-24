@@ -110,18 +110,21 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
             track('webinar_registered', { form_id: 'webinar_registration' });
             setIsSubmitted(true);
             setIsSubmitting(false);
-
-            setTimeout(() => {
-                onClose();
-                setIsSubmitted(false);
-                setIsAgeConfirmed(false);
-                setFormData({ fullName: '', whatsappNo: '', email: '', city: '', height: '', weight: '', diseases: '', hp: '' });
-            }, 8000);
+            // Modal stays open until the user manually closes it or clicks the Community link so they don't miss the CTA.
         } catch (err) {
             console.error('Lead submission failed:', err);
             setErrorMsg('Failed to submit form. Please check your network connection and try again.');
             setIsSubmitting(false);
         }
+    };
+
+    const handleModalClose = () => {
+        onClose();
+        setTimeout(() => {
+            setIsSubmitted(false);
+            setIsAgeConfirmed(false);
+            setFormData({ fullName: '', whatsappNo: '', email: '', city: '', height: '', weight: '', diseases: '', hp: '' });
+        }, 300);
     };
 
     return (
@@ -141,7 +144,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onClick={onClose}
+                        onClick={handleModalClose}
                         style={{
                             position: 'absolute',
                             top: 0, left: 0, right: 0, bottom: 0,
@@ -168,7 +171,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                         }}
                     >
                         <button
-                            onClick={onClose}
+                            onClick={handleModalClose}
                             aria-label="Close registration modal"
                             style={{
                                 position: 'absolute',
