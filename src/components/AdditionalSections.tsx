@@ -311,7 +311,7 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
                 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <Calendar size={22} color="#0EA5E9" />
-                        <span>Saturday, 29th Aug</span>
+                        <span>Friday, 4th Sep</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <Clock size={22} color="#0EA5E9" />
