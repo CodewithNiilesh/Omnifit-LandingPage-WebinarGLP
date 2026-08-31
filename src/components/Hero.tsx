@@ -117,7 +117,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                         <Calendar size={24} color="var(--color-brand-blue)" />
-                        <span>Saturday, 29th Aug</span>
+                        <span>Friday, 4th Sep</span>
                     </div>
                     <div style={{
                         display: 'flex',
