@@ -1,10 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star, Calendar, Clock, Video } from 'lucide-react';
+import { WEBINAR_DATE_EN } from '../webinarConfig';
 
 interface HeroProps {
     openModal: () => void;
 }
+
+const [webinarDateEn, webinarTimeEn] = WEBINAR_DATE_EN.split(' · ');
 
 const Hero: React.FC<HeroProps> = ({ openModal }) => {
     return (
@@ -81,7 +84,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         fontWeight: 500,
                         lineHeight: 1.5
                     }}>
-                        Understand your body with doctor‑led GLP‑1 protocols & habit psychology – <br className="hidden md:block" /> a structured way to lose weight sustainably.
+                        Understand your body with a doctor-led weight & metabolic health program, with a coach by your side every day – <br className="hidden md:block" /> a structured way to lose weight sustainably.
                     </p>
                     <p className="marathi" style={{
                         fontSize: '1.25rem',
@@ -89,7 +92,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         fontWeight: 600,
                         opacity: 1
                     }}>
-                        वैद्यकीय मार्गदर्शनाखाली GLP‑1 आणि lifestyle बदल यांच्या मदतीने वजन कमी करण्याचा विज्ञानाधारित मार्ग.
+                        वैद्यकीय मार्गदर्शनाखाली, doctor आणि coach सोबत वजन कमी करण्याचा विज्ञानाधारित मार्ग.
                     </p>
                 </motion.div>
 
@@ -117,7 +120,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                         <Calendar size={24} color="var(--color-brand-blue)" />
-                        <span>Saturday, 29th Aug</span>
+                        <span>{webinarDateEn}</span>
                     </div>
                     <div style={{
                         display: 'flex',
@@ -127,7 +130,7 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                         paddingLeft: '1.5rem'
                     }}>
                         <Clock size={24} color="var(--color-brand-blue)" />
-                        <span>7:00 PM IST</span>
+                        <span>{webinarTimeEn} IST</span>
                     </div>
                     <div style={{
                         display: 'flex',
@@ -149,13 +152,13 @@ const Hero: React.FC<HeroProps> = ({ openModal }) => {
                     transition={{ duration: 0.6, delay: 0.6 }}
                 >
                     <button onClick={openModal} className="btn btn-primary" style={{ fontSize: '1.125rem' }}>
-                        Register for Masterclass <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
+                        Register for Webinar <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
                     </button>
                     <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--color-muted)' }}>
-                        Limited Spots • Live with Coach Niilesh
+                        Free • Online • Live with Coach Niilesh
                     </p>
                     <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#4A6FA5', maxWidth: '600px', margin: '0.5rem auto 0 auto' }}>
-                        Prescription-only medicine. Doctor assessment required. Not suitable for everyone. Results vary. Works alongside diet, exercise and habit change.
+                        Doctor-led program. Any treatment decision is made only after a doctor's assessment. Results vary from person to person.
                     </p>
                 </motion.div>
 

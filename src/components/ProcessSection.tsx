@@ -6,7 +6,7 @@ const ProcessSection: React.FC = () => {
         { num: 2, title: "Coach Consultation", desc: "Detailed lifestyle analysis with Coach Niilesh.", marathi: "जीवनशैली विश्लेषण." },
         { num: 3, title: "Doctor Review", desc: "Medical history check by Dr. Omkar.", marathi: "वैद्यकीय तपासणी." },
         { num: 4, title: "Blood Work", desc: "Comprehensive metabolic panel.", marathi: "रक्त तपासणी." },
-        { num: 5, title: "Personalized Plan", desc: "Diet, Activity & Medication (if needed).", marathi: "तुमचा खास प्लॅन." },
+        { num: 5, title: "Personalized Plan", desc: "Diet, Activity & Medical Supervision.", marathi: "तुमचा खास प्लॅन." },
         { num: 6, title: "Start Journey", desc: "Daily tracking and weekly reviews.", marathi: "दररोज ट्रॅकिंग." },
     ];
 

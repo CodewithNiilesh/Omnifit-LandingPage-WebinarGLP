@@ -32,7 +32,7 @@ const SolutionSection: React.FC = () => {
                         }
                     `}</style>
 
-                    {/* Item 1: GLP-1 Support */}
+                    {/* Item 1: Doctor-led medical assessment */}
                     <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', padding: '2.5rem', height: '100%', justifyContent: 'flex-start' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                             <div style={{
@@ -46,15 +46,15 @@ const SolutionSection: React.FC = () => {
                                 <Pill size={24} />
                             </div>
                             <h3 style={{ fontSize: '1.5rem', fontWeight: 600, margin: 0, color: 'var(--color-brand-blue)', lineHeight: 1.2 }}>
-                                GLP-1 Medication Support
+                                Doctor-led medical assessment
                             </h3>
                         </div>
                         <div>
                             <p style={{ color: 'var(--color-secondary)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
-                                Doctor-supervised medical approach to help manage hunger signals and reduce food noise.
+                                Your plan starts with a doctor's assessment. Medicine is considered only when a doctor decides it's clinically right for you — never on demand, and never instead of food, movement and habits.
                             </p>
                             <p className="marathi" style={{ fontSize: '1rem', color: 'var(--color-primary)', opacity: 0.8 }}>
-                                भूक नियंत्रित करण्यासाठी वैद्यकीय मदत.
+                                आधी doctor ची तपासणी. औषध फक्त doctor ला योग्य वाटलं तरच — मागणीवरून कधीच नाही.
                             </p>
                         </div>
                     </div>

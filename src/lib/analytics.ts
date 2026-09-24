@@ -51,7 +51,6 @@ export function initAnalytics() {
   isInitialized = true;
 
   const ga4Id = import.meta.env.VITE_GA4_MEASUREMENT_ID;
-  const pixelId = import.meta.env.VITE_META_PIXEL_ID;
   const gtmId = import.meta.env.VITE_GTM_CONTAINER_ID;
 
   // Initialize GA4 if ID exists
@@ -70,29 +69,7 @@ export function initAnalytics() {
     gtag('config', ga4Id);
   }
 
-  // Initialize Meta Pixel if ID exists (Explicitly disable Automatic Advanced Matching)
-  if (pixelId && typeof window !== 'undefined') {
-    (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
-      if (f.fbq) return;
-      n = f.fbq = function () {
-        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = '2.0';
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-
-    // Explicitly disable Automatic Advanced Matching as required by privacy policy
-    (window as any).fbq('init', pixelId, {}, { autoConfig: false });
-    (window as any).fbq('track', 'PageView');
-  }
+  // Meta Pixel base code is loaded directly from index.html (loads exactly once, before React mounts).
 
   // Initialize GTM if container ID exists
   if (gtmId && typeof window !== 'undefined') {
@@ -125,15 +102,6 @@ export function track(eventName: string, params?: Record<string, any>) {
       (window as any).gtag('event', eventName, cleanParams);
     }
 
-    // Meta Pixel
-    if ((window as any).fbq && import.meta.env.VITE_META_PIXEL_ID) {
-      if (eventName === 'page_view') {
-        (window as any).fbq('track', 'PageView');
-      } else if (eventName === 'webinar_registered') {
-        (window as any).fbq('track', 'CompleteRegistration', cleanParams);
-      } else {
-        (window as any).fbq('trackCustom', eventName, cleanParams);
-      }
-    }
+    // Meta Pixel events are fired explicitly at their call sites (see RegistrationModal's Lead event), not here.
   }
 }

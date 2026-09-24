@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle2, AlertCircle } from 'lucide-react';
 import { track } from '../lib/analytics';
@@ -9,6 +9,16 @@ interface RegistrationModalProps {
 }
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZZVGRFc_DUvTL8HGcJq2KB1FBNfSeEmpDn7p9y8CxgfrhjKRc4TrmQ2lyVogSmb7A/exec';
+
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'] as const;
+
+function getUtmParam(key: string): string {
+    try {
+        return sessionStorage.getItem(key) || '';
+    } catch {
+        return '';
+    }
+}
 
 const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -37,6 +47,24 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
         }
         return null;
     };
+
+    useEffect(() => {
+        try {
+            const searchParams = new URLSearchParams(window.location.search);
+            UTM_KEYS.forEach((key) => {
+                const value = searchParams.get(key);
+                if (value) {
+                    try {
+                        sessionStorage.setItem(key, value);
+                    } catch {
+                        // sessionStorage unavailable; ignore
+                    }
+                }
+            });
+        } catch {
+            // URL parsing unavailable; ignore
+        }
+    }, []);
 
     const bmi = calculateBMI();
     let bmiCategory = '';
@@ -82,6 +110,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
         setErrorMsg('');
 
         try {
+            const leadEventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+
             const payload: Record<string, string> = {
                 form_id: 'webinar_registration',
                 source: 'Webinar Page',
@@ -96,7 +126,13 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                 weight: formData.weight,
                 bmi: bmi || '',
                 diseases: formData.diseases,
-                hp: formData.hp
+                hp: formData.hp,
+                event_id: leadEventId,
+                utm_source: getUtmParam('utm_source'),
+                utm_medium: getUtmParam('utm_medium'),
+                utm_campaign: getUtmParam('utm_campaign'),
+                utm_content: getUtmParam('utm_content'),
+                wa_consent: 'notice-v1'
             };
 
             await fetch(GOOGLE_SCRIPT_URL, {
@@ -108,9 +144,20 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
             });
 
             track('webinar_registered', { form_id: 'webinar_registration' });
+
+            if (typeof window.fbq === 'function') {
+                window.fbq('track', 'Lead', {}, { eventID: leadEventId });
+            }
+
             setIsSubmitted(true);
             setIsSubmitting(false);
             // Modal stays open until the user manually closes it or clicks the Community link so they don't miss the CTA.
+
+            const SUPPORT_WA = '919662736273';
+            const WA_TEXT = 'Hi Omnifit, I just registered for the free webinar. Please guide me.';
+            setTimeout(() => {
+                window.location.href = 'https://wa.me/' + SUPPORT_WA + '?text=' + encodeURIComponent(WA_TEXT);
+            }, 1500);
         } catch (err) {
             console.error('Lead submission failed:', err);
             setErrorMsg('Failed to submit form. Please check your network connection and try again.');
@@ -235,10 +282,13 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                         We'll also message you the link on WhatsApp before the session.
                                     </p>
                                 </div>
+                                <p style={{ fontSize: '0.85rem', color: '#4A6FA5' }}>
+                                    Opening WhatsApp…
+                                </p>
                             </div>
                         ) : (
                             <>
-                                <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-brand-blue)', marginBottom: '0.5rem' }}>Join the Masterclass</h2>
+                                <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-brand-blue)', marginBottom: '0.5rem' }}>Join the Webinar</h2>
                                 <p style={{ color: 'var(--color-secondary)', marginBottom: '1.5rem' }}>Please fill out your details below to reserve your spot.</p>
 
                                 {errorMsg && (
@@ -410,6 +460,10 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                             I confirm I am 18 years of age or older.
                                         </label>
                                     </div>
+
+                                    <p style={{ fontSize: '0.85rem', color: '#1E3A5F', marginTop: '0.25rem', lineHeight: 1.5 }}>
+                                        By submitting, you agree we may send you webinar reminders and program updates on WhatsApp. Reply STOP anytime to stop them.
+                                    </p>
 
                                     <button
                                         type="submit"

@@ -8,7 +8,7 @@ export const FloatingWhatsApp: React.FC = () => {
 
     return (
         <a
-            href="https://wa.me/919662736273?text=Hi%20Omnifit%2C%20I%20have%20a%20question%20about%20the%20GLP-1%20masterclass"
+            href="https://wa.me/919662736273?text=Hi%20Omnifit%2C%20I%20have%20a%20question%20about%20the%20free%20webinar."
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with Omnifit support on WhatsApp"

@@ -10,27 +10,64 @@
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Mukta:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <title>Omnifit - Medical Weight Loss & Lifestyle Coaching</title>
+  <title>Free Weekly Webinar · Doctor-led Weight & Metabolic Health | Omnifit</title>
 
   <!-- Open Graph / WhatsApp Preview Meta Tags -->
-  <meta property="og:title" content="Omnifit Masterclass - Science-Backed Weight Loss" />
+  <meta property="og:title" content="Omnifit Webinar - Science-Backed Weight Loss" />
   <meta property="og:description"
-    content="Join Dr. Omkar and Coach Niilesh for a free live Masterclass on GLP-1 weight loss and metabolic health specifically for Maharashtrian adults." />
+    content="A free live webinar in Marathi: why weight comes back, and how a doctor-led, habit-first program works. Doctor-led by Dr. Omkar Patil (Diabetologist), hosted by Coach Niilesh." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://webinar.omnifit.in" />
-  <meta property="og:image" content="https://webinar.omnifit.in/preview.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image" content="https://webinar.omnifit.in/og-webinar.jpg" />
+  <meta property="og:image:width" content="1219" />
+  <meta property="og:image:height" content="726" />
+  <meta property="og:image:alt" content="Free weekly webinar — doctor-led weight & metabolic health, in Marathi" />
   <meta property="og:image:type" content="image/jpeg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Omnifit Masterclass - Science-Backed Weight Loss" />
+  <meta name="twitter:title" content="Omnifit Webinar - Science-Backed Weight Loss" />
   <meta name="twitter:description"
-    content="Join our free live Masterclass on GLP-1 weight loss and metabolic health." />
-  <meta name="twitter:image" content="https://webinar.omnifit.in/preview.jpg" />
+    content="Free live webinar in Marathi: why weight comes back, and how a doctor-led program works." />
+  <meta name="twitter:image" content="https://webinar.omnifit.in/og-webinar.jpg" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  (function () {
+    var consentMode = ('%VITE_CONSENT_MODE%' || 'notice').toLowerCase();
+    var consentChoice = null;
+    try {
+      consentChoice = localStorage.getItem('cookie_consent');
+    } catch (e) {
+      consentChoice = null;
+    }
+    if (consentChoice === 'declined') {
+      fbq('consent', 'revoke');
+    } else if (consentMode === 'notice') {
+      fbq('consent', 'grant');
+    } else if (consentMode === 'optin' && consentChoice === 'accepted') {
+      fbq('consent', 'grant');
+    } else {
+      fbq('consent', 'revoke');
+    }
+  })();
+  fbq('init', '1578167957128100');
+  fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
 </head>
 
 <body>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1578167957128100&ev=PageView&noscript=1"
+  /></noscript>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

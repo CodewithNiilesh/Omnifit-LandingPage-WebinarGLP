@@ -22,11 +22,13 @@ export const ConsentBanner: React.FC = () => {
         localStorage.setItem('cookie_consent', 'accepted');
         setIsVisible(false);
         initAnalytics();
+        window.fbq?.('consent', 'grant');
     };
 
     const handleDecline = () => {
         localStorage.setItem('cookie_consent', 'declined');
         setIsVisible(false);
+        window.fbq?.('consent', 'revoke');
     };
 
     if (!isVisible) return null;

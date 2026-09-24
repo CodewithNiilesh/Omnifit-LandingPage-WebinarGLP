@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, XCircle, ArrowRight, ChevronDown, Calendar, Clock, Video } from 'lucide-react';
+import { WEBINAR_DATE_EN } from '../webinarConfig';
+
+const [webinarDateEn, webinarTimeEn] = WEBINAR_DATE_EN.split(' · ');
 
 export const WebinarDetails: React.FC = () => {
     const curriculum = [
-        "What GLP-1 medications are and how they help control cravings and support weight loss.",
-        "Who is medically eligible: BMI criteria, health parameters, safety guidelines.",
+        "Why most weight-loss attempts stop working in week 3 — and why it usually isn't willpower",
+        "Who this program is right for — and who it isn't",
         "Why willpower, diets, and exercise alone often fail – role of hormones & emotions.",
-        "How doctor-supervised GLP-1 + lifestyle support can make weight loss feel simpler and more sustainable.",
+        "How a doctor's assessment, real food, movement and daily coaching work together",
         "How Omnifit supports you with diet, exercise, mindset, app & community.",
-        "Safety, side effects, myths vs facts – explained clearly in Marathi + English.",
+        "Myths vs facts about weight loss, hunger and metabolism",
         "Step-by-step roadmap towards becoming lighter, more energetic, and more confident.",
-        "How to apply for the Omnifit GLP-1 Lifestyle Program after the webinar, if suitable."
+        "How the Omnifit Medical Weight Reset Program works"
     ];
 
     return (
@@ -20,7 +23,7 @@ export const WebinarDetails: React.FC = () => {
                 <div className="glass-card" style={{ padding: '4rem 3rem', background: '#FFFFFF' }}>
                     <span style={{ color: 'var(--color-brand-blue)', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '1rem', display: 'block' }}>Course Curriculum</span>
                     <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-brand-blue)', marginBottom: '1rem' }}>
-                        What You’ll Learn in the <br /> GLP-1 Lifestyle Webinar
+                        What You’ll Learn in the <br /> Free Webinar
                     </h2>
                     <p className="marathi" style={{ fontSize: '1.25rem', color: 'var(--color-brand-blue)', marginBottom: '3rem', fontWeight: 600 }}>
                         "हा वेबिनार तुमच्या पुढच्या १२ आठवड्यांचं आयुष्य बदलू शकतो."
@@ -148,20 +151,12 @@ export const FAQSection: React.FC = () => {
 
     const faqs = [
         {
-            q: "Is GLP-1 safe for me?",
-            a: "GLP-1 medicines are prescription-only and are not suitable for everyone. Like any medicine, they carry real side effects — most commonly nausea, vomiting and digestive discomfort, and less commonly more serious effects. That is exactly why Dr. Omkar reviews your medical history, measurements and blood reports before deciding whether to prescribe, and why you stay under supervision throughout. If it is not right for you, he will tell you so."
+            q: "Will I be put on medicine?",
+            a: "Only if the doctor decides it is clinically right for you, after a full assessment. It isn't suitable for everyone, and it never replaces food, movement and habits."
         },
         {
-            q: "Will I have to take injections forever?",
-            a: "Not necessarily. The aim is to use the medicine as one supervised tool while you build eating, movement and sleep habits with your coach. When and how anyone steps down is a decision your doctor makes with you, based on how you are doing. Nobody can promise a timeline in advance."
-        },
-        {
-            q: "What if I stop the medication?",
-            a: "If you stop without having changed your lifestyle, the weight may return. That is why Omnifit is not just about the medication—it is a 'Lifestyle Program'. We focus on building nutrition and movement habits that stick, so you can sustain your results long-term."
-        },
-        {
-            q: "Will I still need to diet and exercise?",
-            a: "Yes, but it will feel much easier. The medication quiets the 'food noise' and cravings, so you naturally want to eat less. Our coach helps you with simple, sustainable nutrition and 15-minute home workouts that fit your busy life—no starvation or hours at the gym."
+            q: "I already take medicines for Sugar, BP or Thyroid. Should I stop them?",
+            a: "No. Never stop or change any medicine on your own. Your doctor reviews your current medicines and reports as part of the assessment."
         },
         {
             q: "Can I join if I have diabetes / thyroid / PCOS?",
@@ -311,11 +306,11 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
                 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <Calendar size={22} color="#0EA5E9" />
-                        <span>Saturday, 29th Aug</span>
+                        <span>{webinarDateEn}</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <Clock size={22} color="#0EA5E9" />
-                        <span>7:00 PM IST</span>
+                        <span>{webinarTimeEn} IST</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#DC2626' }}>
                         <Video size={22} color="#DC2626" />
@@ -328,7 +323,7 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
                         Join Webinar Now <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
                     </button>
                     <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', maxWidth: '600px', margin: '0.5rem auto 3rem auto' }}>
-                        Prescription-only medicine. Doctor assessment required. Not suitable for everyone. Results vary. Works alongside diet, exercise and habit change.
+                        Doctor-led program. Any treatment decision is made only after a doctor's assessment. Results vary from person to person.
                     </p>
                 </div>
 
@@ -367,7 +362,7 @@ export const Footer: React.FC<FooterProps> = ({ openModal }) => {
                         © 2026 Omnifit Healthcare LLP. All rights reserved.
                     </p>
                     <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.65)', maxWidth: '850px', margin: '0 auto 1rem auto', lineHeight: 1.6 }}>
-                        Individual results may vary. GLP-1 medicines are prescription-only and are prescribed solely by a licensed Registered Medical Practitioner, after a full medical assessment. They are not suitable for everyone. Medicines are dispensed and supplied by licensed third-party pharmacies — Omnifit Healthcare LLP does not manufacture or sell pharmaceutical products. This programme combines medical supervision with diet, exercise and habit coaching. Nothing on this page is intended to diagnose, cure, treat or prevent any disease. Always consult your own doctor before starting, stopping or changing any medicine.
+                        Individual results may vary. Any medicine used as part of this programme is prescription-only and is prescribed solely by a licensed Registered Medical Practitioner, after a full medical assessment. It is not suitable for everyone. Medicines are dispensed and supplied by licensed third-party pharmacies — Omnifit Healthcare LLP does not manufacture or sell pharmaceutical products. This programme combines medical supervision with diet, exercise and habit coaching. Nothing on this page is intended to diagnose, cure, treat or prevent any disease. Always consult your own doctor before starting, stopping or changing any medicine.
                     </p>
                     <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.65)', maxWidth: '850px', margin: '0 auto 1.5rem auto' }}>
                         Omnifit Healthcare LLP is independent and is not affiliated with, endorsed by, or sponsored by Meta Platforms, Google, or any social media or search platform.

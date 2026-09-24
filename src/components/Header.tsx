@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Info } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
@@ -73,24 +73,6 @@ const Header: React.FC<HeaderProps> = ({ openModal }) => {
                             {link.name}
                         </a>
                     ))}
-                    <a href="#glp1" style={{ textDecoration: 'none' }}>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.4rem',
-                            color: 'var(--color-primary)',
-                            fontWeight: 700,
-                            fontSize: '0.9rem',
-                            background: 'rgba(59, 130, 246, 0.1)',
-                            padding: '0.4rem 0.8rem',
-                            borderRadius: '999px',
-                            border: '1px solid rgba(59, 130, 246, 0.2)',
-                            transition: 'all 0.3s ease'
-                        }}>
-                            <Info size={16} color="var(--color-primary)" />
-                            <span>What is GLP-1?</span>
-                        </div>
-                    </a>
                     <button onClick={openModal} className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1rem' }}>Join Webinar</button>
                 </nav>
 
@@ -134,25 +116,6 @@ const Header: React.FC<HeaderProps> = ({ openModal }) => {
                                     {link.name}
                                 </a>
                             ))}
-                            <a href="#glp1" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none' }}>
-                                <div style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    gap: '0.4rem',
-                                    color: 'var(--color-primary)',
-                                    fontWeight: 700,
-                                    fontSize: '0.9rem',
-                                    background: 'rgba(59, 130, 246, 0.1)',
-                                    padding: '0.6rem',
-                                    borderRadius: '8px',
-                                    marginTop: '0.5rem',
-                                    border: '1px solid rgba(59, 130, 246, 0.2)'
-                                }}>
-                                    <Info size={18} color="var(--color-primary)" />
-                                    <span>What is GLP-1?</span>
-                                </div>
-                            </a>
                             <button onClick={openModal} className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem' }}>
                                 Join Webinar
                             </button>

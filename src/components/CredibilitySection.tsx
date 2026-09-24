@@ -26,18 +26,18 @@ const CredibilitySection: React.FC = () => {
                         <div style={{ height: '300px', overflow: 'hidden' }}>
                             <img 
                                 src={dromkarImg} 
-                                alt="Dr. Omkar" 
+                                alt="Dr. Omkar Ramesh Patil, Diabetologist"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} 
                             />
                         </div>
                         <div style={{ padding: '2.5rem' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-brand-blue)' }}>Dr. Omkar</h3>
+                                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-brand-blue)' }}>Dr. Omkar Ramesh Patil</h3>
                                 <BadgeCheck color="#1B5EA8" size={20} />
                             </div>
-                            <p style={{ color: '#1B5EA8', fontWeight: 600, marginBottom: '1.5rem', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '1px' }}>MBBS, MD (Medicine)</p>
+                            <p style={{ color: '#1B5EA8', fontWeight: 600, marginBottom: '1.5rem', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '1px' }}>MBBS, MD (Medicine) · Fellowship in Diabetes & Diabetic Foot, CMC Vellore</p>
                             <p style={{ color: 'var(--color-secondary)', fontSize: '1.1rem', lineHeight: 1.6 }}>
-                                Specialist in Metabolic Health and Weight Management. 10+ years in clinical practice.
+                                Consulting Physician, Intensivist & Diabetologist · Dhanwantari Diabetes Speciality Center
                             </p>
                         </div>
                     </div>
